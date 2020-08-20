@@ -25,9 +25,18 @@ d3.json(sampleData).then(function(data){
         // console.log(otuLabels);
         })
         console.log(theRow)
-        var idsortedSampleValues = theRow.sort((a, b) => b.sample_values - a.sample_values)
-        topTenValues = idsortedSampleValues(0,10);
-        console.log(topTenValues)
+       
+        topSampleValues = theRow.sample_values.slice(0,10);
+        topOTUIDs = theRow.otu_ids.slice(0,10);
+        topOTULabels = theRow.otu_labels.slice(0,10);
+        console.log(topSampleValues)
+        var trace1 = {
+            x: topOTUIDs,
+            y: topSampleValues,
+            type: "bar"
+        }
+        var graphData = [trace1];
+        Plotly.newPlot("#bar", graphData)
         //var otuIDs = data.
     }
 
