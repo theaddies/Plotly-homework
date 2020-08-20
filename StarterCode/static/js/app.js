@@ -3,7 +3,6 @@ sampleData = "../../samples.json"
 //get subjectIDs so we can populate the pull down list.
 
 d3.json(sampleData).then(function(data){
-
     console.log(this)
     var subjectIDs = data.names
     console.log(subjectIDs)
@@ -12,8 +11,8 @@ d3.json(sampleData).then(function(data){
     selectedID.on("change", runFilter)
     var theRow = {}
     function runFilter(){
-        var idValue  = String(selectedID.node().value);
-        console.log("runfilter", selectedID)
+        var idValue  = String(d3.select("#selDataset").node().value);
+        console.log("runfilter", d3.select("#selDataset"))
         console.log("here", idValue)
         data.samples.forEach(function(name){
             if (name.id == idValue) {
@@ -28,15 +27,18 @@ d3.json(sampleData).then(function(data){
        
         topSampleValues = theRow.sample_values.slice(0,10);
         topOTUIDs = theRow.otu_ids.slice(0,10);
+        var topStringOTUIDS = "OTU " + topOTUIDs.toString();
         topOTULabels = theRow.otu_labels.slice(0,10);
         console.log(topSampleValues)
+        console.log(topOTUIDs)
+        console.log(topOTULabels)
         var trace1 = {
-            x: topOTUIDs,
+            x: topStringOTUIDS,
             y: topSampleValues,
             type: "bar"
         }
         var graphData = [trace1];
-        Plotly.newPlot("#bar", graphData)
+        Plotly.newPlot("bar", graphData)
         //var otuIDs = data.
     }
 
