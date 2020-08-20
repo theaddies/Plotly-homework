@@ -25,6 +25,9 @@ d3.json(sampleData).then(function(data){
         // console.log(otuLabels);
         })
         console.log(theRow)
+        var idsortedSampleValues = theRow.sort((a, b) => b.sample_values - a.sample_values)
+        topTenValues = idsortedSampleValues(0,10);
+        console.log(topTenValues)
         //var otuIDs = data.
     }
 
