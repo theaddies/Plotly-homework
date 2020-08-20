@@ -25,17 +25,22 @@ d3.json(sampleData).then(function(data){
         })
         console.log(theRow)
        
-        topSampleValues = theRow.sample_values.slice(0,10);
-        topOTUIDs = theRow.otu_ids.slice(0,10);
-        var topStringOTUIDS = "OTU " + topOTUIDs.toString();
-        topOTULabels = theRow.otu_labels.slice(0,10);
-        console.log(topSampleValues)
-        console.log(topOTUIDs)
-        console.log(topOTULabels)
+        topSampleValues = theRow.sample_values.slice(0,10).reverse();
+        topOTUIDs = theRow.otu_ids.slice(0,10).reverse();
+        var otuString = "OTU ";
+        var topStringOTUIDS = topOTUIDs.map(function(item){
+            return otuString.concat(item.toString());
+        })
+        topOTULabels = theRow.otu_labels.slice(0,10).reverse();
+        console.log(topSampleValues);
+        console.log(topOTUIDs);
+        console.log(topOTULabels);
         var trace1 = {
-            x: topStringOTUIDS,
-            y: topSampleValues,
-            type: "bar"
+            y: topStringOTUIDS,
+            x: topSampleValues,
+            type: "bar",
+            orientation: "h",
+            text: topOTULabels
         }
         var graphData = [trace1];
         Plotly.newPlot("bar", graphData)
