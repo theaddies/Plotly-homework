@@ -83,7 +83,8 @@ d3.json(sampleData).then(function (data) {
             }
         }
         var layout = {title:"",width: 1000, height: 500, margin: {t:100, b:100},
-            xaxis: { title: "OTU ID"}};
+            xaxis: { title: "OTU ID"},
+            yaxis: {title: "Sample Values"}};
         var graphData2 = [trace2];
         Plotly.newPlot('bubble', graphData2, layout);
 
@@ -118,7 +119,7 @@ d3.json(sampleData).then(function (data) {
             }
         ];
         var layout3 = {width: 600, height: 500, margin: {t:0, b:0}};
-        Plotly.newPlot('gauge', graphData3, layout);
+        Plotly.newPlot('gauge', graphData3, layout3);
     }
 
 
