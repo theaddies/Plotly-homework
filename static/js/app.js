@@ -1,4 +1,4 @@
-var sampleData = "./static/data/samples.json"
+var sampleData = "./static/js/samples.json"
 
 //get subjectIDs so we can populate the pull down list.
 var data = {};
