@@ -49,8 +49,10 @@ d3.json(sampleData).then(function (data) {
             orientation: "h",
             text: topOTULabels
         }
+        var layout1 = {title:"",
+        xaxis: { title: "Sample Values"}};
         var graphData = [trace1];
-        Plotly.newPlot("bar", graphData)
+        Plotly.newPlot("bar", graphData, layout1)
         
         allColors = randomColor(theRow.otu_ids.length)
         console.log(allColors);
@@ -80,15 +82,16 @@ d3.json(sampleData).then(function (data) {
                 //color: theRow.otu_ids
             }
         }
-
+        var layout = {title:"",width: 1000, height: 500, margin: {t:100, b:100},
+            xaxis: { title: "OTU ID"}};
         var graphData2 = [trace2];
-        Plotly.newPlot('bubble', graphData2);
+        Plotly.newPlot('bubble', graphData2, layout);
 
         var graphData3 = [
             {
                 domain:{x: [0,1], y: [0,1]},
                 value: metaData.wfreq,
-                title: {text: "scrubs"},
+                title: {text: "Scrubs per Week"},
                 type: "indicator",
                 mode: "gauge+number",
                 gauge: {
@@ -114,7 +117,7 @@ d3.json(sampleData).then(function (data) {
                 }
             }
         ];
-        var layout = {width: 600, height: 500, margin: {t:0, b:0}};
+        var layout3 = {width: 600, height: 500, margin: {t:0, b:0}};
         Plotly.newPlot('gauge', graphData3, layout);
     }
 
